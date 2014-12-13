@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //Setup Parse, with the new localDataStore feature
+        Parse.setApplicationId("2Bi23MdlyO4mWB44Wl8euoLnThVot6VZwY2rrQjN",
+        clientKey:"27Zb24syLLr9JsQXUvzsztG6dX8DIZOKcXJpINXu");
+        Parse.enableLocalDatastore();
+
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil);
+        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+      
+        
         // Override point for customization after application launch.
         return true
     }
